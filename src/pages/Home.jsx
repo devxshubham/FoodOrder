@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import axios from "axios"
+import {Link} from 'react-router-dom'
 
 export const Home = () => {
     const [restaurants, setRestaurants] = useState([])
@@ -14,6 +15,7 @@ export const Home = () => {
     },[])
 
     return <main>
+        <div className="absolute p-3 bg-green-500 font-bold text-white rounded-md top-5 right-5"> <Link to='/grocery'>Gorcery</Link></div>
         <div className="flex flex-wrap">
             {restaurants.map( res => {
                 return <div className="p-5">
