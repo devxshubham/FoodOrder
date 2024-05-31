@@ -6,12 +6,13 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import { About } from './pages/About.jsx'
 import Restaurant from './pages/Restaurant.jsx'
+import App from './App.jsx'
 const Grocery = lazy( ()=> import('./pages/Grocery.jsx'))
 
 const myRouter = createBrowserRouter([
   {
     path : '/',
-    element : <Home/>
+    element : <App/>
   },
   {
     path : '/restaurant/:restaurantId',
@@ -29,4 +30,6 @@ const myRouter = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={myRouter}></RouterProvider>
+
+  
 )
