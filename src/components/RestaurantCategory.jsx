@@ -1,22 +1,21 @@
 import { Button } from "./ui/button"
-import { useState } from "react"
 
   
-const RestaurantCategory = ({data}) => {
-    const [open, setOpen] = useState(false)
+const RestaurantCategory = ({data,showItem,setShowItem,index}) => {
     
-    function handleClick(){
-        setOpen(prev=> !prev);
-    }
+    
 
-    return <div onClick={handleClick} className="flex flex-col max-w-[800px] mx-auto py-2 cursor-pointer">
+    return <div onClick={()=>{
+        if( showItem == index ) setShowItem(undefined)
+        else setShowItem(index)
+    }} className="flex flex-col max-w-[800px] mx-auto py-2 cursor-pointer">
         <div className="flex justify-between py-3 border-b-2">
             <div className="text-[20px] font-bold ">{data.card.card.title}</div>
             <div>+</div>
         </div>
         {data.card.card?.itemCards?.map( item => {
             return <div  key={item?.card?.info?.name}>
-                { open ? <div className="flex justify-between m-2 border-b-2 p-5" >
+                { showItem == index ? <div className="flex justify-between m-2 border-b-2 p-5" >
                     <div className="flex flex-col items-start">
                         <h1 className="font-bold text-[14px]">{item?.card?.info?.name}</h1>
                         <h5> <span>&#8377;</span>  {item?.card?.info?.price ? item?.card?.info?.price / 100 : item?.card?.info?.defaultPrice / 100}</h5>
