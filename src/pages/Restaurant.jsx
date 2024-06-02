@@ -3,9 +3,12 @@ import { useParams } from "react-router-dom";
 import axios from 'axios'
 import { useState } from "react";
 
+import { Button } from "@/components/ui/button";
+import RestaurantCategory from "@/components/RestaurantCategory";
+import { Accordion } from "@radix-ui/react-accordion";
+
 const Restaurant = () => {
     const {restaurantId} = useParams()
-    // console.log(restaurantId)
 
     const [restData, setRestData] = useState([])
 
@@ -18,24 +21,15 @@ const Restaurant = () => {
     },[])
 
     const category = restData.filter ( data => data?.card?.card?.["@type"] === 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory' )
-    console.log(category)
-    // return <div>hi</div>
     
-    return <div className="mx-auto text-center">
-            {category.map( men => {
-                // console.log(men.card.card?.itemCards)
-                return <div > 
-                    <div className="font-bold">{men.card?.card?.title}</div>
-                    <div>
-                        {men.card.card?.itemCards?.map( item => {
-                            return <h1>{item.card.info.name}</h1>
-                        })}
-                    </div>
-                </div>
-            })}
+    return <div className="mx-auto max-w-[1000px] text-center">
+        {category.map( data => {
+            return <RestaurantCategory key={data.card?.card?.title} data={data}></RestaurantCategory>
+        })}
     </div>
     
 
 }
 
 export default Restaurant
+
