@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import axios from "axios"
-import {Link, useNavigate, useSearchParams} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import { RestaurantCard, restaurantIsOpen } from "../components/RestaurantCard"
 
 const Home = () => {
@@ -23,7 +23,6 @@ const Home = () => {
 
     const OpenRestaurant = restaurantIsOpen(RestaurantCard)
     return <main>
-        <div className="absolute p-3 bg-green-500 font-bold text-white rounded-md top-5 right-5"> <Link to='/grocery'>Gorcery</Link></div>
         <div className="flex flex-wrap">
             {restaurants.map( res => {
                 return res.info.isOpen ? <OpenRestaurant  res={res} handleClick={handleClick} />

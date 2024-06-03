@@ -1,15 +1,21 @@
+import { useDispatch } from "react-redux"
 import { Button } from "./ui/button"
+import { addItem } from "@/lib/cartSlice"
 
   
 const RestaurantCategory = ({data,showItem,setShowItem,index}) => {
     
-    
-
-    return <div onClick={()=>{
+    const handleClick = (index)=>{
         if( showItem == index ) setShowItem(undefined)
         else setShowItem(index)
-    }} className="flex flex-col max-w-[800px] mx-auto py-2 cursor-pointer">
-        <div className="flex justify-between py-3 border-b-2">
+    }
+    const dispatch = useDispatch()
+    const handleAddItem = (item)=>{
+        dispatch(addItem(item))
+    }
+
+    return <div className="flex flex-col max-w-[800px] mx-auto py-2 cursor-pointer">
+        <div onClick={()=>handleClick(index)} className="flex justify-between py-3 border-b-2">
             <div className="text-[20px] font-bold ">{data.card.card.title}</div>
             <div>+</div>
         </div>
@@ -23,7 +29,7 @@ const RestaurantCategory = ({data,showItem,setShowItem,index}) => {
                     </div>
                     <div className="relative min-w-[200px] p-3 flex flex-col items-center">
                         {item?.card?.info?.imageId ? <img className="contain-content w-[200px] h-[200px] rounded-lg" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${item?.card?.info?.imageId}`} alt="" /> : <div></div> }
-                        <Button className=" bottom-0  absolute" variant={"order"}>ADD</Button>
+                        <Button className=" bottom-0  absolute" variant={"order"} onClick={() => handleAddItem(item?.card?.info?.name)}>ADD</Button>
                     </div>
                 </div> : <div></div> }  
             </div>

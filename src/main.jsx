@@ -10,6 +10,7 @@ import Restaurant from './pages/Restaurant.jsx'
 import appStore from './lib/appStore'
 import Home from './pages/Home'
 import App from './App'
+import Cart from './pages/Cart'
 const Grocery = lazy( ()=> import('./pages/Grocery.jsx'))
 
 
@@ -33,6 +34,10 @@ const myRouter = createBrowserRouter([
       {
         path : '/grocery',
         element : <Suspense fallback={<h1>....loading</h1>}> <Grocery/> </Suspense>
+      },
+      {
+        path : '/cart',
+        element : <Cart/>
       }
     ]
   }
