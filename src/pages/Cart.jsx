@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button"
-import { clearCart } from "@/lib/cartSlice"
+import { clearCart } from "../lib/cartSlice"
 import { useDispatch, useSelector } from "react-redux"
 
 const Cart = () => {
@@ -17,7 +16,7 @@ const Cart = () => {
                 return <li>{item}</li>
             })}
         </ul>
-        <Button variant={"destructive"} onClick={handleClearCart}>Clear Cart</Button>
+        <button  onClick={handleClearCart}>Clear Cart</button>
     </div>
 }
 
