@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios'
 import { useState } from "react";
 
-import RestaurantCategory from "../components/RestaurantCategory";
+import RestaurantCategory from "@/components/RestaurantCategory";
 
 const Restaurant = () => {
     const {restaurantId} = useParams()

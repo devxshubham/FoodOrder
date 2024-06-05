@@ -1,5 +1,7 @@
 import { useDispatch } from "react-redux"
-import { addItem } from "../lib/cartSlice"
+import { Button } from "./ui/button"
+import { addItem } from "@/lib/cartSlice"
+
   
 const RestaurantCategory = ({data,showItem,setShowItem,index}) => {
     
@@ -27,7 +29,7 @@ const RestaurantCategory = ({data,showItem,setShowItem,index}) => {
                     </div>
                     <div className="relative min-w-[200px] p-3 flex flex-col items-center">
                         {item?.card?.info?.imageId ? <img className="contain-content w-[200px] h-[200px] rounded-lg" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${item?.card?.info?.imageId}`} alt="" /> : <div></div> }
-                        <button className=" bottom-0 p-5 bg-green-500 text-white font-bold text-[14px]  absolute" onClick={() => handleAddItem(item?.card?.info?.name)}>ADD</button>
+                        <Button className=" bottom-0  absolute" variant={"order"} onClick={() => handleAddItem(item?.card?.info?.name)}>ADD</Button>
                     </div>
                 </div> : <div></div> }  
             </div>
